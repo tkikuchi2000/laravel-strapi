@@ -122,22 +122,24 @@ class LaravelStrapi
 
     /**
      * Function to create new entries in the Strapi DB.
+     * @throws ConnectionException
      */
     public function create(string $type, array $data): array
     {
-        $endpoint = "$this->strapiUrl/$type";
-        $response = Http::withHeaders($this->headers)->post($endpoint, ['data' => $data]);
+        $endpoint = "$this->url/$type";
+        $response = Http::withToken($this->token)->post($endpoint, ['data' => $data]);
 
         return $response->json();
     }
 
     /**
      * Function to create new entries in the Strapi DB.
+     * @throws ConnectionException
      */
     public function update(string $type, int|string $id, array $data): array
     {
-        $endpoint = "$this->strapiUrl/$type/$id";
-        $response = Http::withHeaders($this->headers)->put($endpoint, ['data' => $data]);
+        $endpoint = "$this->url/$type/$id";
+        $response = Http::withToken($this->token)->put($endpoint, ['data' => $data]);
 
         return $response->json();
     }
