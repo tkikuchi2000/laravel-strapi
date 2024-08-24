@@ -16,8 +16,7 @@ grumphp:
             config: psalm.xml.dist
             show_info: true
 
-        #FIXME - upgrade to PHP 8.x
-        #rector: ~
+        rector: ~
 
         securitychecker_roave:
             run_always: true
